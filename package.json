@@ -16,8 +16,11 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@firebase/firestore": "^4.7.1",
     "autoprefixer": "^10.4.20",
+    "firebase": "^10.13.1",
     "gatsby": "^5.13.7",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-manifest": "^5.13.1",
     "gatsby-plugin-postcss": "^6.13.1",
