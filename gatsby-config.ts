@@ -7,6 +7,7 @@ require("dotenv").config({
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Seasonal Foods`,
+    description: `A helpful guide to eating in-season. 👩🏻‍🌾 🥬`,
     siteUrl: `https://seasonalfoods.netlify.app`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -38,6 +39,15 @@ const config: GatsbyConfig = {
           "@": "src",
         },
         extensions: ["js", "jsx", "ts", "tsx"]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Inter`
+        ],
+        display: 'swap'
       }
     }
   ],
