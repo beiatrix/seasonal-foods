@@ -32,7 +32,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <div className="pt-6 sm:pt-12 lg:pt-20 pb-10 px-12 sm:px-20 lg:px-40 min-h-[calc(100vh-58px)]">
         <Header />
         <Toolbar />
-        <div className="w-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="w-100 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {
             data.map((food) => <FoodCard food={food} />)
           }
