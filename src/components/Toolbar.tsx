@@ -3,7 +3,7 @@ import React from "react"
 
 const Toolbar = () => {
   return (
-    <div className="flex pb-8 sm:pb-12 gap-2 lg:gap-4">
+    <div className="flex pb-8 lg:pb-14 sm:pb-12 gap-2 lg:gap-4">
         <div className="w-full lg:w-2/3 p-3 border border-black">
           Name
         </div>

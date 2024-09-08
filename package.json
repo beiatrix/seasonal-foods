@@ -18,6 +18,7 @@
   "dependencies": {
     "@firebase/firestore": "^4.7.1",
     "autoprefixer": "^10.4.20",
+    "date-fns": "^3.6.0",
     "firebase": "^10.13.1",
     "gatsby": "^5.13.7",
     "gatsby-plugin-alias-imports": "^1.0.5",
