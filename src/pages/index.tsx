@@ -31,15 +31,35 @@ const IndexPage: React.FC<PageProps> = () => {
   }, [])
 
   /**
-   * searching
+   * searching + filtering
    */
   const [searchText, setSearchText] = useState('')
+  const [kind, setKind] = useState('')
+  const [season, setSeason] = useState('')
 
-  /**
-   * filtering
-   */
   const filteredData = data.filter(document => {
-    return document.name.toLowerCase().startsWith(searchText.toLowerCase())
+    const matchSearchText = document.name.toLowerCase()
+      .startsWith(searchText.toLowerCase())
+  
+    let matchKind
+    if (kind && kind !== 'all') {
+      matchKind = document.kind === kind
+    } else {
+      matchKind = true
+    }
+    
+    let matchSeason
+    if (season && season !== 'all') {
+      matchSeason = document.seasonality.includes(season)
+    } else {
+      matchSeason = true
+    }
+
+    return (
+      matchSearchText &&
+      matchKind &&
+      matchSeason
+    )
   })
 
   return (
@@ -47,8 +67,12 @@ const IndexPage: React.FC<PageProps> = () => {
       <div className="pt-6 sm:pt-12 lg:pt-20 pb-10 px-12 sm:px-20 lg:px-36 xl:px-52 2xl:px-64 min-h-[calc(100vh-58px)]">
         <Header />
         <Toolbar
+          kind={kind}
           searchText={searchText}
+          season={season}
+          setKind={setKind}
           setSearchText={setSearchText}
+          setSeason={setSeason}
         />
         {
           filteredData.length

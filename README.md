@@ -20,6 +20,7 @@ yarn dev
 
 The site runs locally at http://localhost:8000 
 
+Explore site data at http://localhost:8000/___graphql
 
 ### Sources 📚
 
