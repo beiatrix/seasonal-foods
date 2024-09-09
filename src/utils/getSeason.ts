@@ -57,15 +57,15 @@ export const getSeason = (date: Date) => {
     isWithinInterval(date, winterInterval1) ||
     isWithinInterval(date, winterInterval2)
   ) {
-    return 'winter ❄️'
+    return 'winter'
   } else if (isWithinInterval(date, springInterval)) {
-    return 'spring 🌸'
+    return 'spring'
   } else if (isWithinInterval(date, summerInterval)) {
-    return 'summer ☀️'
+    return 'summer'
   } else if (isWithinInterval(date, fallInterval)) {
-    return 'fall 🍂'
+    return 'fall'
   } else {
-    return 'N/A :('
+    return ''
   }
 }
 

@@ -8,7 +8,13 @@ const Footer = () => {
         built by beiatrix
       </div>
       <div>
-        source: USDA
+        source:&nbsp;
+        <a
+          href="https://snaped.fns.usda.gov/resources/nutrition-education-materials/seasonal-produce-guide"
+          target="_blank"
+        >
+          USDA
+        </a>
       </div>
     </div>
   )
