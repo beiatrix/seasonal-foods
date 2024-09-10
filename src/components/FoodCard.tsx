@@ -5,6 +5,7 @@ const FoodCard = ({ food }) => {
   return (
     <div className="border border-black p-2">
       <div key={food.id}>{food.name} | {food.kind}</div>
+      {food.imageUrl && <img src={food.imageUrl} />}
       {
         food.seasonality.map((season, index) => (
           <div key={`${food.id}-season-${index}`}>
