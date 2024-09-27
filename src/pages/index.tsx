@@ -62,6 +62,10 @@ const IndexPage: React.FC<PageProps> = () => {
     )
   })
 
+  useEffect(() => {
+    setKind('all')
+  }, []);
+
   return (
     <main>
       <div className="pt-6 sm:pt-12 lg:pt-20 pb-10 px-12 sm:px-20 lg:px-36 xl:px-52 2xl:px-64 min-h-[calc(100vh-58px)]">

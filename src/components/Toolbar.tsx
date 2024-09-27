@@ -1,6 +1,18 @@
 // react
 import React from "react"
 
+// images
+import fruitImage from "@/images/fruit.svg"
+import vegetableImage from "@/images/vegetable.svg"
+import winterImage from "@/images/winter.svg"
+import springImage from "@/images/spring.svg"
+import summerImage from "@/images/summer.svg"
+import fallImage from "@/images/fall.svg"
+import checkImage from "@/images/check.svg"
+
+// components
+import Dropdown from "@/components/Dropdown"
+
 interface ToolbarProps {
   kind: string
   searchText: string
@@ -20,95 +32,75 @@ const Toolbar = ({
 }: ToolbarProps) => {
   const kindOptions = [
     {
-      label: '🍎 Fruit',
+      label: 'Fruit',
+      image: fruitImage,
       value: 'fruit'
     }, 
     {
-      label: '🥬 Vegetable',
+      label: 'Vegetable',
+      image: vegetableImage,
       value: 'vegetable'
     },
     {
-      label: '☑️ All Kinds',
+      label: 'All Kinds',
+      image: checkImage,
       value: 'all'
     }
   ]
 
   const seasonOptions = [
     {
-      label: '❄️ Winter',
+      label: 'Winter',
+      image: winterImage,
       value: 'winter'
     },
     {
-      label: '🌸 Spring',
+      label: 'Spring',
+      image: springImage,
       value: 'spring'
     },
     {
-      label: '☀️ Summer',
+      label: 'Summer',
+      image: summerImage,
       value: 'summer'
     },
     {
-      label: '🍂 Fall',
+      label: 'Fall',
+      image: fallImage,
       value: 'fall'
     },
     {
-      label: '☑️ All Seasons',
+      label: 'All Seasons',
+      image: checkImage,
       value: 'all'
     }
   ]
 
   return (
     <div className="flex flex-col md:flex-row pb-8 lg:pb-14 sm:pb-12 gap-3 lg:gap-4">
-        <input 
-          value={searchText}
-          className="w-full md:w-1/2 lg:w-3/5 2xl:w-2/3 p-3 border border-black"
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Search for a food..."
-          onChange={e => setSearchText(e.target.value)}
+      <input 
+        value={searchText}
+        className="w-full md:w-1/2 lg:w-3/5 2xl:w-2/3 p-3 border border-black focus:outline-none"
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Search for a food..."
+        onChange={e => setSearchText(e.target.value)}
+      />
+      <div className="flex gap-3 w-full md:w-1/2 lg:w-2/5 2xl:w-1/3">
+        <Dropdown
+          label="Kind"
+          options={kindOptions}
+          selectedOption={kind}
+          onSelect={setKind}
         />
-        <div className="flex gap-3 w-full md:w-1/2 lg:w-2/5 2xl:w-1/3">
-          <select 
-            value={kind}
-            className="w-1/2 p-3 border border-black"
-            onChange={e => setKind(e.target.value)}
-          >
-            <option 
-              value=""
-              disabled
-              selected
-            >
-              Kind
-            </option>
-            {
-              kindOptions.map(option => (
-                <option value={option.value}>
-                  {option.label}
-                </option>
-              ))
-            }
-          </select>
-          <select 
-            value={season}
-            className="w-1/2 p-3 border border-black"
-            onChange={e => setSeason(e.target.value)}
-          >
-            <option 
-              value=""
-              disabled
-              selected
-            >
-              Season
-            </option>
-            {
-              seasonOptions.map(option => (
-                <option value={option.value}>
-                  {option.label}
-                </option>
-              ))
-            }
-          </select>
-          </div>
+        <Dropdown
+          label="Season"
+          options={seasonOptions}
+          selectedOption={season}
+          onSelect={setSeason}
+        />
+      </div>
     </div>
   )
 }
