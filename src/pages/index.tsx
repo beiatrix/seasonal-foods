@@ -8,6 +8,9 @@ import type { HeadFC, PageProps } from "gatsby"
 import { db } from "@/config/firebase"
 import { collection, getDocs, type DocumentData } from "firebase/firestore"
 
+// utils
+import { getSeason } from '@/utils/getSeason'
+
 // components
 import FoodCard from "@/components/FoodCard"
 import Footer from "@/components/Footer"
@@ -62,14 +65,41 @@ const IndexPage: React.FC<PageProps> = () => {
     )
   })
 
+  /**
+   * set default kind
+   */
   useEffect(() => {
     setKind('all')
   }, []);
 
+  /**
+   * set default season
+   */
+  const date = new Date()
+  const currentSeason = getSeason(date)
+  
+  useEffect(() => {
+    setSeason(currentSeason)
+  }, []);
+
+  // map seasons to tailwind classes
+  const seasonClasses = {
+    spring: { bg: "bg-spring", text: "text-spring-accent" },
+    summer: { bg: "bg-summer", text: "text-summer-accent" },
+    fall: { bg: "bg-fall", text: "text-fall-accent" },
+    winter: { bg: "bg-winter", text: "text-winter-accent" },
+  } as { [key: string]: { [key: string]: string }}
+  const seasonColor = seasonClasses[currentSeason]['bg'] || ''
+  const seasonAccentColor = seasonClasses[currentSeason]['text'] || ''
+
   return (
     <main>
-      <div className="pt-6 sm:pt-12 lg:pt-20 pb-10 px-12 sm:px-20 lg:px-36 xl:px-52 2xl:px-64 min-h-[calc(100vh-58px)]">
-        <Header setSeason={setSeason} />
+      <div className={`pt-6 sm:pt-12 lg:pt-20 pb-10 px-12 sm:px-20 lg:px-36 xl:px-52 2xl:px-64 min-h-[calc(100vh-58px)] ${seasonColor}`}>
+        <Header 
+          date={date} 
+          currentSeason={currentSeason}
+          seasonAccentColor={seasonAccentColor} 
+        />
         <Toolbar
           kind={kind}
           searchText={searchText}
@@ -83,7 +113,12 @@ const IndexPage: React.FC<PageProps> = () => {
             ? (
                 <div className="w-100 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 gap-4">
                   {
-                    filteredData.map((food) => <FoodCard food={food} />)
+                    filteredData.map((food) => (
+                      <FoodCard
+                        key={`food-card-${food.name}`}
+                        food={food} 
+                      />
+                    ))
                   }
                 </div>
               )

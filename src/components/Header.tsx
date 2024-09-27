@@ -1,38 +1,34 @@
 // react
-import React, { useEffect } from "react"
+import React from "react"
 
 // utils
 import { format } from 'date-fns'
-import { getSeason } from '@/utils/getSeason'
 
 // config
 import seasonOptions from "@/config/seasons"
 
 interface HeaderProps {
-  setSeason: (text: string) => void
+  date: Date
+  currentSeason: string
+  seasonAccentColor: string
 }
 
-const Header = ({ setSeason }: HeaderProps) => {
-  const date = new Date()
+const Header = ({ date, currentSeason, seasonAccentColor }: HeaderProps) => {
   const today = format(date, 'MMMM d, y')
-  const season = getSeason(date)
+  const foundSeason = seasonOptions.find((seasonOption) => {
+    return seasonOption.value === currentSeason
+  })
 
-  useEffect(() => {
-    setSeason(season)
-  }, []);
-
-  const foundSeason = seasonOptions.find(seasonOption => seasonOption.value === season)
-
-  const seasonLabel = season
+  const seasonLabel = currentSeason
     ? foundSeason?.label
     : 'N/A :('
 
-  const seasonImage = season
+  const seasonImage = currentSeason
     ? foundSeason?.image
     : ''
 
   return (
-    <header className="py-4 sm:py-6 lg:py-8">
+    <header className={`py-4 sm:py-6 lg:py-8 ${seasonAccentColor}`}>
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-limelight font-semibold pb-2">
         What's in season right now?
       </h1>

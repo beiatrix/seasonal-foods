@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react"
 import { LuChevronDown } from "react-icons/lu"
 
 // types
-import { Option } from "@/types/option"
+import { type Option } from "@/types/option"
 
 interface DropdownProps {
   label: string

@@ -7,15 +7,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        red: '#E76F51', // fall
-        orange: '#F4A261', // fall accent
-        yellow: '#E9C46A', // summer
-        green: '#2A9D8F', // spring
-        'green-accent': '#9cf0d6', // spring accent
-        blue: '#264653', // winter
-        'blue-accent': '#cbf3f0', // winter accent
-        purple: '#7209b7',
-        neutral: '#f4f1de' // summer accent
+        fall: '#F4A261', // orange
+        'fall-accent': '#bf3917', // burnt orange
+        summer: '#fffbc7', // light yellow
+        'summer-accent': '#f0c000', // yellow
+        spring: '#b6fae5', // light green
+        'spring-accent': '#25b88c', // green
+        winter: '#264653', // blue
+        'winter-accent': '#a4f8fc', // light blue
+        neutral: '#f4f1de'
       }
     },
     fontFamily: {
