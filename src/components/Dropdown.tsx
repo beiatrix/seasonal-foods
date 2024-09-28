@@ -38,24 +38,24 @@ const Dropdown = (
   const foundOption = options.find(option => option.value === selectedOption)
 
   return (
-    <div ref={dropdownRef} className="w-1/2 p-3 border border-black relative inline-block text-left">
-      <div className="text-xs mb-1 text-gray-700">{ label }</div>
+    <div ref={dropdownRef} className="w-1/2 relative inline-block text-left">
       <button
         onClick={toggleDropdown}
-        className="w-full flex align-middle justify-between"
+        className="w-full h-full text-left opacity-80 p-3 bg-white rounded-md"
       >
-        <div>
+        <div className="text-xs mb-1 text-gray-700">{ label }</div>
+        <div className="flex justify-between">
           { selectedOption && foundOption 
             ? (
               <div className="flex">
                 <img className="h-6 me-2" src={foundOption.image} />
-                <div>{foundOption.label}</div>
+                <span>{foundOption.label}</span>
               </div>
             )
             : label 
           }
+          <LuChevronDown className="mt-1" />
         </div>
-        <LuChevronDown className="mt-1" />
       </button>
 
       <div
@@ -69,7 +69,7 @@ const Dropdown = (
               <a 
                 key={`${label}-option-${option.value}`}
                 href="#" 
-                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 flex" 
+                className="block px-4 py-4 text-gray-700 hover:bg-gray-100 flex" 
                 role="menuitem"
                 onClick={() => onSelect(option.value)}
               >

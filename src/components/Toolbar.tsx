@@ -29,14 +29,14 @@ const Toolbar = ({
     <div className="flex flex-col md:flex-row pb-8 lg:pb-14 sm:pb-12 gap-3 lg:gap-4">
       <input 
         value={searchText}
-        className="w-full md:w-1/2 lg:w-3/5 2xl:w-2/3 p-3 border border-black focus:outline-none"
+        className="w-full lg:w-1/2 2xl:w-2/3 p-3 rounded-md bg-white opacity-80 focus:outline-none"
         type="text"
         id="name"
         name="name"
         placeholder="Search for a food..."
         onChange={e => setSearchText(e.target.value)}
       />
-      <div className="flex gap-3 w-full md:w-1/2 lg:w-2/5 2xl:w-1/3">
+      <div className="flex gap-3 w-full lg:w-1/2 2xl:w-1/3">
         <Dropdown
           label="Kind"
           options={kindOptions}

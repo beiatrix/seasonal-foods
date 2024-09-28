@@ -82,23 +82,23 @@ const IndexPage: React.FC<PageProps> = () => {
     setSeason(currentSeason)
   }, []);
 
-  // map seasons to tailwind classes
-  const seasonClasses = {
-    spring: { bg: "bg-spring", text: "text-spring-accent" },
-    summer: { bg: "bg-summer", text: "text-summer-accent" },
-    fall: { bg: "bg-fall", text: "text-fall-accent" },
-    winter: { bg: "bg-winter", text: "text-winter-accent" },
-  } as { [key: string]: { [key: string]: string }}
-  const seasonColor = seasonClasses[currentSeason]['bg'] || ''
-  const seasonAccentColor = seasonClasses[currentSeason]['text'] || ''
+  /**
+   * change background color according to season
+   */
+  const backgroundColors = {
+    spring: 'bg-spring',
+    summer: 'bg-summer',
+    fall: 'bg-fall',
+    winter: 'bg-winter',
+  } as { [key: string]: string }
+  const backgroundColor = backgroundColors[currentSeason] || ''
 
   return (
     <main>
-      <div className={`pt-6 sm:pt-12 lg:pt-20 pb-10 px-12 sm:px-20 lg:px-36 xl:px-52 2xl:px-64 min-h-[calc(100vh-58px)] ${seasonColor}`}>
+      <div className={`pt-6 sm:pt-12 lg:pt-20 pb-10 px-12 sm:px-20 lg:px-36 xl:px-52 2xl:px-64 min-h-[calc(100vh-58px)] ${backgroundColor}`}>
         <Header 
           date={date} 
           currentSeason={currentSeason}
-          seasonAccentColor={seasonAccentColor} 
         />
         <Toolbar
           kind={kind}
@@ -125,7 +125,7 @@ const IndexPage: React.FC<PageProps> = () => {
             : 'No results :('
         }
       </div>
-      <Footer />
+      <Footer currentSeason={currentSeason} />
     </main>
   )
 }
