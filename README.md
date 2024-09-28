@@ -3,6 +3,7 @@
 
 > **What's in season right now? 🤔 🥬**
 
+![Seasonal Foods](https://beiatrix.s3.us-west-1.amazonaws.com/projects/seasonal-foods/seasonal-foods.gif)
 
 ### Built with... 💪😮‍💨
 
